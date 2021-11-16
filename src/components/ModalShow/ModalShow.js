@@ -87,7 +87,7 @@ const ModalShow = ({ open, handleClose, propertyData }) => {
               }}
             ></TextField>
             <Button
-              onClick={updateProperty}
+              onClick={() => updateProperty(21)}
               sx={{ width: "80%" }}
               variant="contained"
             >

@@ -61,7 +61,7 @@ const Property = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {searchValue.map((property) => (
+                  {searchValue.map((property, index) => (
                     <TableRow
                       key={property.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
