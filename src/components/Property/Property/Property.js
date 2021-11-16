@@ -17,7 +17,11 @@ const Property = () => {
   const [searchValue, setsearchValue] = useState([]);
   const [propertyname, setpropertyName] = useState("");
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [propertyId, setPropertyId] = useState(0);
+  const handleOpen = (id) => {
+    setPropertyId(id);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const [propertyData, setPropertyData] = useState([]);
@@ -33,7 +37,7 @@ const Property = () => {
   const deleteProperty = (data) => {
     axios.delete(`http://localhost:5000/property/${data}`);
   };
-
+  console.log(propertyId);
   console.log(propertyData);
   return (
     <Box>
@@ -82,10 +86,10 @@ const Property = () => {
                           Delete
                         </Button>
                         <Button
-                          sx={{ ml: "5px" }}
+                          sx={{ m: "15px" }}
                           variant="contained"
                           color="secondary"
-                          onClick={handleOpen}
+                          onClick={() => handleOpen(property.id)}
                         >
                           Edit
                         </Button>
@@ -99,6 +103,7 @@ const Property = () => {
         </Grid>
       </Container>
       <ModalShow
+        propertyId={propertyId}
         propertyData={propertyData}
         handleClose={handleClose}
         open={open}

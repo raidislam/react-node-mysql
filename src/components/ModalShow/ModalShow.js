@@ -19,14 +19,15 @@ const style = {
   p: 4,
 };
 
-const ModalShow = ({ open, handleClose, propertyData }) => {
+const ModalShow = ({ open, handleClose, propertyData, propertyId }) => {
   const [propertyname, setpropertyName] = useState("");
   const [userName, setuserName] = useState("");
   const [location, setLocation] = useState("");
   const [phone, setphone] = useState("");
 
-  console.log(propertyData);
+  console.log(propertyId);
   const updateProperty = (id) => {
+    console.log(id);
     axios.put("http://localhost:5000/update", {
       propertyname: propertyname,
       name: userName,
@@ -87,7 +88,7 @@ const ModalShow = ({ open, handleClose, propertyData }) => {
               }}
             ></TextField>
             <Button
-              onClick={() => updateProperty(21)}
+              onClick={() => updateProperty(propertyId)}
               sx={{ width: "80%" }}
               variant="contained"
             >
